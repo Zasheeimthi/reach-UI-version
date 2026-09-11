@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Reach — Astra edition.
+   Dark-first, deep and luminous: near-black page, raised violet-black
+   panels, vivid violet actions, white headings over lavender-gray body
+   text. Pill buttons, badges and fields; 24px cards, modals and menus.
+   Type: Century Gothic throughout, with Questrial as a web fallback.
+------------------------------------------------------------------- */
+@theme {
+  --font-sans: "Century Gothic", "CenturyGothic", "Questrial", "Trebuchet MS",
+    sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: var(--font-sans);
+
+  /* Brand — the violet that lights the system */
+  --color-brand-violet: #7c3aed;
+  --color-brand-glow: #a78bfa;
+  --color-brand-pink: #f472b6;
+  --color-brand-yellow: #fbbf24;
+  --color-brand-dark: #0a0813;
+  --color-brand-deep: #16112b;
+
+  /* Primary — vivid violet for actions; lighter tints for text on dark */
+  --color-primary-50: rgba(124, 58, 237, 0.14);
+  --color-primary-100: rgba(124, 58, 237, 0.24);
+  --color-primary-200: rgba(139, 92, 246, 0.45);
+  --color-primary-500: #7c3aed;
+  --color-primary-600: #9d7bff; /* hover, and link text on dark — 5.4:1 */
+  --color-primary-700: #c4b5fd; /* text on violet tints — 9.6:1 */
+
+  /* Secondary — pink, reserved for differentiation */
+  --color-secondary-50: rgba(244, 114, 182, 0.14);
+  --color-secondary-100: rgba(244, 114, 182, 0.24);
+  --color-secondary-200: rgba(244, 114, 182, 0.45);
+  --color-secondary-500: #f472b6;
+  --color-secondary-600: #f9a8d4;
+
+  /* Semantic — bright text on translucent tints, as in Astra's delta chips */
+  --color-success: #4ade80;
+  --color-success-soft: rgba(34, 197, 94, 0.14);
+  --color-warning: #fbbf24;
+  --color-warning-soft: rgba(245, 158, 11, 0.14);
+  --color-danger: #fb7185;
+  --color-danger-soft: rgba(244, 63, 94, 0.16);
+
+  /* Ink — white headings, lavender-gray body */
+  --color-ink: #f5f3ff;
+  --color-ink-700: #c4bfd6;
+  --color-ink-500: #948fa8;
+  --color-ink-400: #87829d; /* 12px hints — ≥4.5:1 on every surface */
+
+  /* Lines & surfaces — panels lift through darker-purple surfaces + subtle borders */
+  --color-line: rgba(167, 139, 250, 0.16);
+  --color-line-soft: rgba(167, 139, 250, 0.09);
+  --color-surface: #120e22;
+  --color-surface-soft: #1a1530;
+  --color-canvas: #0a0813;
+
+  /* Shape. Controls (buttons, fields, chips, badges) are pills — set on the
+     component, never by remapping the scale. Containers step 12 → 16 → 24. */
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-card: 24px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink-700);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.55;
+    letter-spacing: 0;
+    font-feature-settings: normal;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  button,
+  input,
+  select,
+  textarea,
+  option,
+  kbd,
+  code,
+  pre,
+  samp,
+  svg text {
+    font-family: var(--font-sans);
+  }
+
+  /* Keyboard-first: a visible focus ring on every interactive element */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-glow);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgba(124, 58, 237, 0.45);
+    color: #ffffff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+
+  /* Quiet scrollbars so the content stays the hero */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(167, 139, 250, 0.22) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: rgba(167, 139, 250, 0.22);
+    border-radius: 999px;
+  }
+
+  input[type="date"] {
+    color-scheme: dark;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Raised violet-black panel with a hairline top highlight */
+  .surface {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.03) inset,
+      0 12px 40px -24px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Keep figures in the same typeface as labels and headings. */
+  .num {
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    letter-spacing: 0;
+  }
+
+  /* Hero chart panel: slightly deeper violet-black with a centre-lit glow */
+  .panel-dark {
+    background:
+      radial-gradient(60% 80% at 50% 0%, rgba(124, 58, 237, 0.22), transparent 70%),
+      linear-gradient(180deg, #16112b 0%, #0d0a1a 100%);
+    color: #ffffff;
+    border: 1px solid var(--color-line);
+  }
+
+  /* Astra's centre-lit beam divider */
+  .beam {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(167, 139, 250, 0.55) 50%,
+      transparent 100%
+    );
+  }
+}
+
+@layer utilities {
+  .hairline-grid {
+    background-image: linear-gradient(
+      to right,
+      var(--color-line-soft) 1px,
+      transparent 1px
+    );
+    background-size: 32px 100%;
+  }
+  /* Violet glow under primary actions — restrained, so a row of them stays calm */
+  .glow-primary {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+      0 4px 14px -6px rgba(124, 58, 237, 0.55);
+  }
+}
+
+/* Touch-target extension. Lets compact controls (32–36px chips, 36px small
+   buttons) keep their visual size while the pointer / touch target stays at
+   least 44×44. The pseudo-element is part of the button, so clicks and hover
+   on it belong to the button.                                              */
+@utility hit-44 {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Small screens: calmer card radius so full-width panels don't look chunky. */
+@media (max-width: 639px) {
+  .surface {
+    border-radius: 16px;
+  }
+}
+
+/* Hide scrollbars on chip rails while keeping swipe-to-scroll. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+input[type="range"] {
+  accent-color: var(--color-primary-500);
+  cursor: pointer;
+}
+
+/* No motion should ever be purely decorative */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
