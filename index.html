@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Reach — plan, launch and optimise every campaign from one calm, focused dashboard." />
     <meta name="theme-color" content="#0a0813" />
+    <script>
+      try {
+        const theme = localStorage.getItem("reach-theme") === "light" ? "light" : "dark";
+        document.documentElement.dataset.theme = theme;
+        if (theme === "light") document.querySelector('meta[name="theme-color"]').content = "#f7f5fc";
+      } catch {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Use installed Century Gothic first; Questrial is the web fallback. -->

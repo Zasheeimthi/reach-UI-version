@@ -4,11 +4,11 @@ import { cn } from "../utils/cn";
 type Tone = "primary" | "secondary" | "success" | "warning" | "danger";
 
 const strokes: Record<Tone, string> = {
-  primary: "#a78bfa",
-  secondary: "#f472b6",
-  success: "#4ade80",
-  warning: "#fbbf24",
-  danger: "#fb7185",
+  primary: "var(--color-brand-glow)",
+  secondary: "var(--color-secondary-500)",
+  success: "var(--color-success)",
+  warning: "var(--color-warning)",
+  danger: "var(--color-danger)",
 };
 
 /* Sparkline — a quiet trend line, no gridlines, no decoration */
@@ -43,7 +43,7 @@ export function Sparkline({
     <svg
       viewBox={`0 0 ${w} ${height}`}
       preserveAspectRatio="none"
-      className={cn("h-10 w-full", className)}
+      className={cn("sparkline h-10 w-full", className)}
       aria-hidden="true"
     >
       <defs>
@@ -98,9 +98,9 @@ export function Columns({
   const c = dark
     ? {
         tick: "text-ink-500",
-        guide: "border-white/[0.06]",
-        base: "border-white/20",
-        value: "text-white",
+        guide: "border-line-soft",
+        base: "border-line",
+        value: "text-ink",
         bar: "bg-gradient-to-t from-primary-500/70 to-brand-glow/80 group-hover:from-primary-500 group-hover:to-brand-glow group-focus-visible:from-primary-500 group-focus-visible:to-brand-glow",
         peakBar: "bg-gradient-to-t from-primary-500 to-brand-glow shadow-[0_0_24px_rgba(167,139,250,0.45)]",
         xLabel: "text-ink-500",
@@ -177,6 +177,7 @@ export function Columns({
                   {format(d.value)}
                 </span>
                 <div
+                  data-chart-bar={d === peak ? "peak" : "regular"}
                   className={cn(
                     "absolute inset-x-0 bottom-0 rounded-t-lg transition-colors",
                     d === peak ? c.peakBar : c.bar,

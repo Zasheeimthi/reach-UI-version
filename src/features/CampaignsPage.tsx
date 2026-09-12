@@ -84,13 +84,13 @@ const statusRank: Record<Status, number> = {
 
 /* Left stripe — status as colour, echoing the badge */
 const stripe: Record<Status, string> = {
-  failed: "bg-danger",
-  in_review: "bg-primary-500",
-  active: "bg-success",
-  paused: "bg-warning",
-  draft: "bg-ink-400",
-  completed: "bg-ink-400",
-  archived: "bg-ink-400",
+  failed: "bg-danger-accent",
+  in_review: "bg-review-accent",
+  active: "bg-success-accent",
+  paused: "bg-warning-accent",
+  draft: "bg-neutral-accent",
+  completed: "bg-neutral-accent",
+  archived: "bg-neutral-accent",
 };
 
 const platformOrder: Channel[] = ["google", "meta", "x", "reddit", "tiktok", "microsoft"];
@@ -168,7 +168,7 @@ function CampaignCard({ c, action, onOpen }: { c: Campaign; action: Action; onOp
               className="h-1 w-full overflow-hidden rounded-full bg-line-soft"
             >
               <div
-                className="h-full rounded-full bg-gradient-to-r from-primary-500 to-brand-glow"
+                className="progress-fill h-full rounded-full bg-gradient-to-r from-primary-500 to-brand-glow"
                 style={{ width: `${pacing}%` }}
               />
             </div>

@@ -452,7 +452,7 @@ export default function CreateCampaignFlow({
         </ol>
         <div className="builder-steps-footer">
           <div className="h-1 overflow-hidden rounded-full bg-line-soft" role="progressbar" aria-valuenow={step + 1} aria-valuemin={1} aria-valuemax={steps.length} aria-label="Setup progress">
-            <div className="h-full rounded-full bg-gradient-to-r from-primary-500 to-brand-glow transition-[width]" style={{ width: `${((step + 1) / steps.length) * 100}%` }} />
+            <div className="progress-fill h-full rounded-full bg-gradient-to-r from-primary-500 to-brand-glow transition-[width]" style={{ width: `${((step + 1) / steps.length) * 100}%` }} />
           </div>
           <p className="text-[12px] leading-5 text-ink-500">Nothing goes live until you launch.</p>
         </div>

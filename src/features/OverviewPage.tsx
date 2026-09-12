@@ -233,7 +233,7 @@ export default function OverviewPage({
   return (
     <div className="space-y-6">
       {/* Page header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="overview-welcome flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-[28px] leading-tight font-semibold tracking-[-0.02em] text-ink">Good afternoon, Admin</h1>
           <p className="mt-1 max-w-xl text-[14px] text-ink-500">Here’s how your campaigns are performing across spend, reach and results this month.</p>
@@ -328,7 +328,7 @@ export default function OverviewPage({
             return (
               <div
                 key={m.label}
-                className="overflow-hidden rounded-xl border border-line bg-surface-soft"
+                className="metric-card overflow-hidden rounded-xl border border-line bg-surface-soft"
               >
                 <div className="px-5 pt-5">
                   <dt className="flex items-center gap-3 text-[14px] text-ink-700">
@@ -379,7 +379,7 @@ export default function OverviewPage({
             aria-valuemax={100}
             className="mt-2 h-1.5 overflow-hidden rounded-full bg-line-soft"
           >
-            <div className="h-full w-full rounded-full bg-gradient-to-r from-primary-500 to-brand-glow" />
+            <div className="progress-fill h-full w-full rounded-full bg-gradient-to-r from-primary-500 to-brand-glow" />
           </div>
         </div>
       </Card>
@@ -556,7 +556,7 @@ export default function OverviewPage({
                       {c.ctrValue > 0 && (
                         <span className="h-1.5 w-16 overflow-hidden rounded-full bg-line">
                           <span
-                            className="block h-full rounded-full bg-primary-500"
+                            className="progress-fill block h-full rounded-full bg-primary-500"
                             style={{ width: `${c.ctrValue}%` }}
                           />
                         </span>

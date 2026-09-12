@@ -158,13 +158,8 @@ export default function CampaignDrawer({
           {Array.from({ length: Math.min(3, campaign.ads) }).map((_, i) => (
             <li key={i} className="flex items-center gap-4 rounded-xl border border-line p-3">
               <span
-                className="size-12 shrink-0 rounded-md"
-                style={{
-                  backgroundImage:
-                    i % 2 === 0
-                      ? "linear-gradient(135deg,#2a1f4d,#3b1f4a)"
-                      : "linear-gradient(135deg,#3b1f4a,#2a1f4d)",
-                }}
+                className="ad-version-preview size-12 shrink-0 rounded-md"
+                data-alternate={i % 2 !== 0}
                 aria-hidden="true"
               />
               <div className="min-w-0 flex-1">

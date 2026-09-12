@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { cn } from "../utils/cn";
 import { Avatar, Button, Tooltip } from "./ui";
+import { ThemeToggle } from "./ThemeToggle";
 
 export type RouteKey =
   | "overview"
@@ -240,7 +241,7 @@ function SidebarPanel({
               aria-valuemin={0}
               aria-valuemax={100}
             >
-              <div className="h-full w-[42%] rounded-full bg-primary-500" />
+              <div className="progress-fill h-full w-[42%] rounded-full bg-primary-500" />
             </div>
           </>
         )}
@@ -630,6 +631,7 @@ export function AppShell({
             </button>
 
             <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+              <ThemeToggle />
               <button
                 type="button"
                 aria-label="Notifications, 2 unread"
